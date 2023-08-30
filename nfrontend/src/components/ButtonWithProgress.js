@@ -10,5 +10,4 @@ const ButtonWithProgress = (props) => {
         </button>
     );
 };
-
 export default ButtonWithProgress;
