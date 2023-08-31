@@ -28,6 +28,7 @@ class UserList extends Component {
                         <div className='list-group-item list-group-item-action' key={user.username}>{user.username}</div>
                     ))}
                 </div> */}
+                
             </div>
         );
     }
