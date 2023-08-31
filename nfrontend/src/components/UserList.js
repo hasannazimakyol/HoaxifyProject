@@ -23,12 +23,11 @@ class UserList extends Component {
         return (
             <div className='card'>
                 <h3 className='card-header text-center'>{t("Users")}</h3>
-                {/* <div className='list-group'>
+                <div className='list-group'>
                     {users.map(user => (
                         <div className='list-group-item list-group-item-action' key={user.username}>{user.username}</div>
                     ))}
-                </div> */}
-                
+                </div>
             </div>
         );
     }

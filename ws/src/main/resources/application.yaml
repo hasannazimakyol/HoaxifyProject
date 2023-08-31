@@ -26,7 +26,7 @@ spring:
     web:
       pageable:
         default-page-size: 10
-        max-page-size: 100        
+        max-page-size: 100   
   #jackson:
   #  mapper:
   #   DEFAULT_VIEW_INCLUSION: true #JSONView ile map edebilmesi için
