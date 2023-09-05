@@ -29,8 +29,11 @@ public class UserService {
 	}
 
 	//public Page<User> getUsers(int currentPage, int pageSize) {
-	public Page<User> getUsers(Pageable page) {
+	public Page<User> getUsers(Pageable page, User user) {
 		//Pageable page = PageRequest.of(currentPage, pageSize);
+		if(user != null) {
+			return userRepository.findByUsernameNot(user.getUsername(), page);
+		}
 		return userRepository.findAll(page);
 	}
 

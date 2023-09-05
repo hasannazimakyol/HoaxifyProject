@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.hoaxify.ws.error.ApiError;
 import com.hoaxify.ws.shared.CurrentUser;
-import com.hoaxify.ws.shared.Views;
 import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserRepository;
+import com.hoaxify.ws.user.vm.UserVM;
 
 @RestController
 public class AuthController {
@@ -35,54 +35,8 @@ public class AuthController {
 	@Autowired
 	UserRepository userRepository;
 	
-	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
 	@PostMapping("api/1.0/auth")
-	@JsonView(Views.Base.class)
-	ResponseEntity<?> handleAuthentication(@CurrentUser User user){
-//	ResponseEntity<?> handleAuthentication(Authentication authentication){
-//	ResponseEntity<?> handleAuthentication(@RequestHeader(name="Authorization", required = false) String authorization){
-//		log.info(authorization);
-//		if(authorization == null) {
-//			ApiError error = new ApiError(401, "Unauthorized request", "/api/1.0/auth");
-//			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
-//		}
-//		String base64encoded = authorization.split("Basic ")[1]; // MzQyOjNFOEY2ZnJ3bUFGakdzbQ==
-//		String decoded = new String(Base64.getDecoder().decode(base64encoded)); // user1:P4ssword
-//		String[] parts = decoded.split(":");
-//		String username = parts[0];
-//		String password = parts[1];
-//		User inDB = userRepository.findByUsername(username);
-//		if(inDB == null) {
-//			ApiError error = new ApiError(401, "Unauthorized request", "/api/1.0/auth");
-//			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
-//		}
-//		String hashedPassword = inDB.getPassword();
-//		if(!passwordEncoder.matches(password, hashedPassword)) {
-//			ApiError error = new ApiError(401, "Unauthorized request", "/api/1.0/auth");
-//			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
-//		}
-		
-		// username, displayName, image
-//		Map<String, String> responseBody = new HashMap<>();
-//		responseBody.put("username", inDB.getUsername());
-//		responseBody.put("displayName", inDB.getDisplayName());
-//		responseBody.put("image", inDB.getImage());
-//		return ResponseEntity.ok(responseBody);
-		
-//		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		User user = (User) authentication.getPrincipal();
-//		String username = user.getUsername();
-//		User inDB = userRepository.findByUsername(username);
-		
-		return ResponseEntity.ok(user);
+	UserVM handleAuthentication(@CurrentUser User user){
+		return new UserVM(user);
 	}
-	
-//	@ExceptionHandler(BadCredentialsException.class)
-//	@ResponseStatus(HttpStatus.UNAUTHORIZED)
-//	ApiError handleBadCredentialsException() {
-//		ApiError error = new ApiError(401, "Unauthorized request", "api/1.0/auth");
-//		return error;
-//	}
-
 }

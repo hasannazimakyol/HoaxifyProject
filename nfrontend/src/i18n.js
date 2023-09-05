@@ -14,7 +14,10 @@ i18n.use(initReactI18next).init({
         Agree: "Agree",
         Login: "Login",
         Logout: "Logout",
-        Users: "Users"
+        Users: "Users",
+        Next: '>',
+        Previous: '<',
+        LoadFailure: 'Load Failure'
       },
     },
     tr: {
@@ -28,7 +31,10 @@ i18n.use(initReactI18next).init({
         Agree: "Kabul Et",
         Login: "Giriş Yap",
         Logout: "Çık",
-        Users: "Kullanıcılar"
+        Users: "Kullanıcılar",
+        Next: '>',
+        Previous: '<',
+        LoadFailure: 'Liste alınamadı'
       },
     },
   },
