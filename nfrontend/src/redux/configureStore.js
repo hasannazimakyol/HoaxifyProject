@@ -34,7 +34,6 @@ const configureStore = () => {
         updateStateInStorage(store.getState());
         setAuthorizationHeader(store.getState());
     })
-
     return store;
 }
 

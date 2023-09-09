@@ -8,7 +8,6 @@
 #    properties:
 #      hibernate:
 #        globally_quoted_identifiers: true
- 
 spring:
   datasource:
     generate-unique-name: false
@@ -27,15 +26,35 @@ spring:
       pageable:
         default-page-size: 10
         max-page-size: 100   
-  #jackson:
+  profiles:
+    active:
+    - dev
   #  mapper:  
   #   DEFAULT_VIEW_INCLUSION: true #JSONView ile map edebilmesi için
       
 server:
-  port: '8090'
+  port: '8080'
 #logging:
 #  level:
-#    '[org.springframework]': DEBUG            
+#    '[org.springframework]': DEBUG
+
+hoaxify:
+  upload-path: picture-storage
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+hoaxify:
+  upload-path: storage-production
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+hoaxify:
+  upload-path: storage-dev
        
   
     

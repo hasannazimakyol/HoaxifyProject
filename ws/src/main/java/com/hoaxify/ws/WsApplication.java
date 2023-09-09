@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserService;
@@ -17,7 +18,8 @@ public class WsApplication {
 		SpringApplication.run(WsApplication.class, args);
 	}
 	
-	@Bean // @Bean annotation'ı spring çalıştığında bu objeyi yaratması için 
+	@Bean // @Bean annotation'ı spring çalıştığında bu objeyi yaratması için
+	@Profile("dev")
 	CommandLineRunner createInitialUsers(UserService userService) { //initialize
 		return (args) -> {
 			for(int i = 1; i <= 25; i++) {

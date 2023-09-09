@@ -13,6 +13,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.Data;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -46,6 +47,7 @@ public class User implements UserDetails{
 //	@JsonIgnore
 	private String password;
 	
+	//@Lob char255'ten daha büyük değer alabilmesi için
 	private String image;
 
 	@Override
