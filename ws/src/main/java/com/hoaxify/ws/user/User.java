@@ -8,12 +8,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+<<<<<<< HEAD
 import com.hoaxify.ws.shared.Views;
+=======
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+<<<<<<< HEAD
+=======
+import jakarta.persistence.Lob;
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 import lombok.Data;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -35,22 +42,34 @@ public class User implements UserDetails{
 	@Size(min = 4, max = 255)
 //	@Column(unique = true)
 	@UniqueUsername
+<<<<<<< HEAD
 	@JsonView(Views.Base.class)
+=======
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 	private String username;
 	
 	@NotNull
 	@Size(min = 4, max = 255)
+<<<<<<< HEAD
 	@JsonView(Views.Base.class)
+=======
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 	private String displayName;
 	
 	@NotNull
 	@Size(min = 6, max = 255)
 	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message="{hoaxify.constraint.password.Pattern.message}")
 //	@JsonIgnore
+<<<<<<< HEAD
 	@JsonView(Views.Sensitive.class)
 	private String password;
 	
 	@JsonView(Views.Base.class)
+=======
+	private String password;
+	
+	//@Lob char255'ten daha büyük değer alabilmesi için
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 	private String image;
 
 	@Override

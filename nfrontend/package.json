@@ -45,7 +45,11 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< HEAD
   "proxy": "http://localhost:8090",
+=======
+  "proxy": "http://localhost:8080",
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "sass": "^1.65.1"

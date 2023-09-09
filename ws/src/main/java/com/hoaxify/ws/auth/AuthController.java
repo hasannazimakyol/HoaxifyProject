@@ -23,9 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.hoaxify.ws.error.ApiError;
 import com.hoaxify.ws.shared.CurrentUser;
+<<<<<<< HEAD
 import com.hoaxify.ws.shared.Views;
 import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserRepository;
+=======
+import com.hoaxify.ws.user.User;
+import com.hoaxify.ws.user.UserRepository;
+import com.hoaxify.ws.user.vm.UserVM;
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 
 @RestController
 public class AuthController {
@@ -35,6 +41,7 @@ public class AuthController {
 	@Autowired
 	UserRepository userRepository;
 	
+<<<<<<< HEAD
 	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@PostMapping("api/1.0/auth")
@@ -85,4 +92,10 @@ public class AuthController {
 //		return error;
 //	}
 
+=======
+	@PostMapping("api/1.0/auth")
+	UserVM handleAuthentication(@CurrentUser User user){
+		return new UserVM(user);
+	}
+>>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
 }
