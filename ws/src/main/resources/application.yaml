@@ -29,6 +29,10 @@ spring:
   profiles:
     active:
     - dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+        
   #  mapper:  
   #   DEFAULT_VIEW_INCLUSION: true #JSONView ile map edebilmesi için
       

@@ -97,7 +97,7 @@ const ProfileCard = (props) => {
             setNewImage(fileReader.result);
         }
         fileReader.readAsDataURL(file);
-    }
+    };
 
     const pendingApiCall = useApiProgress('put', '/api/1.0/users/' + username);
 
