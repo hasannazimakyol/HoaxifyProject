@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import ProfileCard from '../components/ProfileCard';
-
-const UserPage = (props) => {
-    return (
-        <div className='container'>
-            <ProfileCard username={props.username}/>
-=======
 import React, { useEffect, useState } from 'react';
 import ProfileCard from '../components/ProfileCard';
 import { getUser } from '../api/apiCalls';
@@ -14,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useApiProgress } from '../shared/ApiProgress';
 import Spinner from '../components/Spinner';
+import HoaxFeed from '../components/HoaxFeed';
 
 const UserPage = (props) => {
 
@@ -24,7 +16,7 @@ const UserPage = (props) => {
     const { username } = useParams();
     const { t } = useTranslation();
 
-    const pendingApiCall = useApiProgress('get', '/api/1.0/users/' + username);
+    const pendingApiCall = useApiProgress('get', '/api/1.0/users/' + username, true);
 
     useEffect(() => {
         setNotFound(false);
@@ -42,12 +34,6 @@ const UserPage = (props) => {
         loadUser();
     }, [username]);
 
-    if (pendingApiCall) {
-        return (
-            <Spinner />
-        );
-    }
-
     if (notFound) {
         return (
             <div className='container'>
@@ -60,10 +46,22 @@ const UserPage = (props) => {
         )
     }
 
+    if (pendingApiCall || user.username !== username) {
+        return (
+            <Spinner />
+        );
+    }
+    
     return (
         <div className='container'>
-            <ProfileCard user={user} />
->>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
+            <div className='row'>
+                <div className='col'>
+                    <ProfileCard user={user} />
+                </div>
+                <div className='col'>
+                    <HoaxFeed />
+                </div>
+            </div>
         </div>
     );
 };

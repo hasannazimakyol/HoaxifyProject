@@ -6,17 +6,6 @@ export const signup = (body) => { //export provides accessibility
 }
 
 export const login = creds => {
-<<<<<<< HEAD
-    return axios.post('/api/1.0/auth', {}, {auth: creds});
-}
-
-export const changeLanguage = language =>{
-    axios.defaults.headers['accept-language'] = language;
-}
-
-export const getUsers = () => {
-    return axios.get('/api/1.0/users');
-=======
     return axios.post('/api/1.0/auth', {}, { auth: creds });
 }
 
@@ -43,5 +32,28 @@ export const getUser = (username) => {
 
 export const updateUser = (username, body) => {
     return axios.put(`/api/1.0/users/${username}`, body);
->>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
+}
+
+export const postHoax = hoax => {
+    return axios.post('/api/1.0/hoaxes', hoax);
+}
+
+export const getHoaxes = (username, page = 0) => {
+    const path = username ? `/api/1.0/users/${username}/hoaxes?page=` : '/api/1.0/hoaxes?page=';
+    return axios.get(path + page);
+}
+
+export const getOldHoaxes = (id, username) => {
+    const path = username ? `/api/1.0/users/${username}/hoaxes/${id}` : `/api/1.0/hoaxes/${id}`;
+    return axios.get(path);
+}
+
+export const getNewHoaxCount = (id, username) => {
+    const path = username ? `/api/1.0/users/${username}/hoaxes/${id}?count=true` : `/api/1.0/hoaxes/${id}?count=true`;
+    return axios.get(path);
+}
+
+export const getNewHoaxes = (id, username) => {
+    const path = username ? `/api/1.0/users/${username}/hoaxes/${id}?direction=after` : `/api/1.0/hoaxes/${id}?direction=after`;
+    return axios.get(path);
 }

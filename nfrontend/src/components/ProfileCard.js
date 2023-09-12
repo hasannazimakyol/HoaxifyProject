@@ -1,31 +1,13 @@
-<<<<<<< HEAD
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
-const ProfileCard = (props) => {
-
-    const { username : loggedInUsername } = useSelector((store) => ({username: store.username}));
-    const routeParams = useParams();
-    // const pathUsername = props.match.params.username;
-    const pathUsername = routeParams.username;
-    let message = 'We cannot edit';
-    if (pathUsername === loggedInUsername) {
-        message = 'We can edit';
-    }
-    return (
-        <div>
-            {message}
-=======
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileImageWithDefault from './ProfileImageWithDefault';
 import { useTranslation } from 'react-i18next';
 import Input from './Input';
 import { updateUser } from '../api/apiCalls';
 import { useApiProgress } from '../shared/ApiProgress';
 import ButtonWithProgress from './ButtonWithProgress';
+import { updateSuccess } from '../redux/authActions';
 
 const ProfileCard = (props) => {
 
@@ -38,6 +20,7 @@ const ProfileCard = (props) => {
     const [editable, setEditable] = useState(false);
     const [newImage, setNewImage] = useState();
     const [validationErrors, setValidationErrors] = useState({});
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setUser(props.user);
@@ -95,6 +78,7 @@ const ProfileCard = (props) => {
             const response = await updateUser(username, body);
             setInEditMode(false);
             setUser(response.data);
+            dispatch(updateSuccess(response.data));
         } catch (error) {
             if (error.response.data.validationErrors) {
                 setValidationErrors(error.response.data.validationErrors);
@@ -165,7 +149,6 @@ const ProfileCard = (props) => {
                     </div>
                 )}
             </div>
->>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
         </div>
     );
 };

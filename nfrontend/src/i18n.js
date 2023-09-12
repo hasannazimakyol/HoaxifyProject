@@ -1,5 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+import tr from 'javascript-time-ago/locale/tr'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -14,9 +17,6 @@ i18n.use(initReactI18next).init({
         Agree: "Agree",
         Login: "Login",
         Logout: "Logout",
-<<<<<<< HEAD
-        Users: "Users"
-=======
         Users: "Users",
         Next: '>',
         Previous: '<',
@@ -25,8 +25,12 @@ i18n.use(initReactI18next).init({
         Edit: 'Edit',
         ChangeDisplayName: 'Change display name',
         Save: 'Save',
-        Cancel: 'Cancel'
->>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
+        Cancel: 'Cancel',
+        MyProfile: 'My Profile',
+        Hoaxify: 'Hoaxify',
+        ThereAreNoHoaxes: 'There are no hoaxes',
+        LoadOldHoaxes: 'Load old hoaxes',
+        ThereAreNewHoaxes: 'There are new haoxes'
       },
     },
     tr: {
@@ -40,9 +44,6 @@ i18n.use(initReactI18next).init({
         Agree: "Kabul Et",
         Login: "Giriş Yap",
         Logout: "Çık",
-<<<<<<< HEAD
-        Users: "Kullanıcılar"
-=======
         Users: "Kullanıcılar",
         Next: '>',
         Previous: '<',
@@ -51,8 +52,12 @@ i18n.use(initReactI18next).init({
         Edit: 'Düzenle',
         ChangeDisplayName: 'Görünür isminizi değiştirin',
         Save: 'Kaydet',
-        Cancel: 'İptal'
->>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
+        Cancel: 'İptal',
+        MyProfile: 'Hesabım',
+        Hoaxify: 'Hoaxify',
+        ThereAreNoHoaxes: 'Hoax bulunamadı',
+        LoadOldHoaxes: 'Geçmiş Hoaxları getir',
+        ThereAreNewHoaxes: 'Yeni hoaxlar var'
       },
     },
   },
@@ -68,5 +73,8 @@ i18n.use(initReactI18next).init({
     wait: true,
   },
 });
+
+TimeAgo.addLocale(en);
+TimeAgo.addLocale(tr);
 
 export default i18n;

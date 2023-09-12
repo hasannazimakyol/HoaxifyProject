@@ -1,47 +1,10 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import { getUsers } from '../api/apiCalls';
-import { withTranslation } from 'react-i18next';
-
-class UserList extends Component {
-
-    state = {
-        users: []
-    }
-
-    componentDidMount() {
-        getUsers().then(response => {
-            this.setState({
-                users: response.data
-            });
-        });
-    }
-
-    render() {
-        const { users } = this.state;
-        const { t } = this.props;
-
-        return (
-            <div className='card'>
-                <h3 className='card-header text-center'>{t("Users")}</h3>
-                <div className='list-group'>
-                    {users.map(user => (
-                        <div className='list-group-item list-group-item-action' key={user.username}>{user.username}</div>
-                    ))}
-                </div>
-            </div>
-        );
-    }
-}
-
-export default withTranslation()(UserList);    
-=======
 import React, { useEffect, useState } from 'react';
 import { getUsers } from '../api/apiCalls';
 import { useTranslation } from 'react-i18next';
 import UserListItem from './UserListItem';
 import { useApiProgress } from '../shared/ApiProgress';
 import Spinner from './Spinner';
+import { useSelector } from 'react-redux';
 
 const UserList = () => {
 
@@ -51,6 +14,10 @@ const UserList = () => {
         number: 0
     });
 
+    const { isLoggedIn } = useSelector((store) => ({
+        isLoggedIn: store.isLoggedIn
+    }));
+
     const [loadFailure, setLoadFailure] = useState(false);
 
     const pendingApiCall = useApiProgress('get', '/api/1.0/users?page');
@@ -58,6 +25,10 @@ const UserList = () => {
     useEffect(() => {
         loadUsers();
     }, []); // [] componentDidMount
+
+    useEffect(() => {
+        loadUsers();
+    }, [isLoggedIn]);
 
     const onClickNext = () => {
         const nextPage = page.number + 1;
@@ -116,4 +87,3 @@ const UserList = () => {
 }
 
 export default UserList;    
->>>>>>> 1228ac1633a57b02e146b9c0c26cca9cd0f67b35
