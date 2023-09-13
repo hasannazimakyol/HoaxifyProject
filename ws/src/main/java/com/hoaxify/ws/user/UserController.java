@@ -16,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,6 +78,13 @@ public class UserController {
 		//}
 		User user = userService.updateUser(username, updatedUser);
 		return ResponseEntity.ok(new UserVM(user));
+	}
+	
+	@DeleteMapping("/users/{username}")
+	@PreAuthorize("#username == principal.username")
+	GenericResponse deleteUser(@PathVariable String username) {
+		userService.deleteUser(username);
+		return new GenericResponse("User is removed");
 	}
 	
 	

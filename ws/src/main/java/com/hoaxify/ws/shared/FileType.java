@@ -15,13 +15,13 @@ import jakarta.validation.Payload;
 @Retention(RUNTIME)
 @Constraint(validatedBy = { FileTypeValidator.class })
 public @interface FileType {
-	
+
 	String message() default "{hoaxify.constraint.FileType.message}";
 
-	Class<?>[] groups() default { };
+	Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default { };
-	
+	Class<? extends Payload>[] payload() default {};
+
 	String[] types();
 
 }
