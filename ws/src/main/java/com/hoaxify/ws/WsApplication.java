@@ -29,18 +29,22 @@ public class WsApplication {
 	@Profile("dev")
 	CommandLineRunner createInitialUsers(UserService userService, HoaxService hoaxService) { // initialize
 		return (args) -> {
-			for (int i = 1; i <= 25; i++) {
-				User user = new User();
-				user.setUsername("user" + i);
-				user.setDisplayName("display" + i);
-				user.setPassword("P4ssword");
-				userService.save(user);
-				for (int j = 1; j <= 20; j++) {
-					HoaxSubmitVM hoax = new HoaxSubmitVM();
-					hoax.setContent("haox - (" + j + ") from user " + i);
-					hoaxService.save(hoax, user);
-				}
-			}
+//			try {
+//				userService.getByUsername("user1");
+//			} catch (Exception e) {
+//				for (int i = 1; i <= 25; i++) {
+//					User user = new User();
+//					user.setUsername("user" + i);
+//					user.setDisplayName("display" + i);
+//					user.setPassword("P4ssword");
+//					userService.save(user);
+//					for (int j = 1; j <= 20; j++) {
+//						HoaxSubmitVM hoax = new HoaxSubmitVM();
+//						hoax.setContent("haox - (" + j + ") from user " + i);
+//						hoaxService.save(hoax, user);
+//					}
+//				}
+//			}
 		};
 //		return new CommandLineRunner() {
 //			
